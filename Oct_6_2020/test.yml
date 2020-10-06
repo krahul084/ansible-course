@@ -1,0 +1,41 @@
+---
+- name: Configure Apache in webservers
+  gather_facts: False
+  hosts: webservers
+  become: yes
+  tasks:
+   - name: Install Apache
+     package:
+       name: httpd
+       state: latest
+
+   - name: Copy demo.html under /var/www/html 
+     copy: 
+       src: demo.html
+       dest: /var/www/html/demo.html
+       owner: apache
+       group: apache
+       mode: 0777
+
+   - name: Start and Enable Apache
+     service: 
+       name: httpd
+       state: started
+       enabled: yes
+
+   - name: Check if apache is running
+     wait_for:
+       port: 80
+       state: started
+
+   - name: Get content from apache webserver
+     uri:
+       url: http://localhost/demo.html
+       method: GET
+       return_content: yes
+     register: web_output     
+
+   - name: Display web page output
+     debug:
+       var: web_output.content | trim
+
