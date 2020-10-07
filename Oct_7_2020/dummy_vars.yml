@@ -1,0 +1,5 @@
+web_package: "httpd"
+web_user: "apache"
+web_service: "httpd"
+index_file: "demo.html"
+webserver_root_path: "/var/www/html"
