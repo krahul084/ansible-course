@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    sudo_users: 
+      - "rkunda"
+      - "rkonidala"
+      - "jlilley"
+  tasks: 
+    - name: Deploy sudoers file to /tmp
+      template: 
+        src: sudoers.j2
+        dest: /tmp/sudoers
+        

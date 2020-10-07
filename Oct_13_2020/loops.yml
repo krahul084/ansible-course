@@ -10,9 +10,6 @@
         chdir: "/"
       register: root_files_op
 
-    - debug: 
-        msg: "{{ item }}"
-      loop: "{{ root_files_op.stdout_lines }}"
 
     - name: get metadata for filesystem
       stat: 
@@ -21,4 +18,8 @@
       loop: "{{ root_files_op.stdout_lines }}"
 
     - debug: 
-        var: filesys_meta
+        msg: 
+         - "Filesystem: {{ item.item }}"
+         - "Size:       {{ item.stat.size }}"
+      when: (item.stat.size | int) > 500
+      loop: "{{ filesys_meta.results }}"
