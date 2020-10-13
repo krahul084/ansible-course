@@ -12,4 +12,4 @@
 
     - debug: 
         msg: "{{ item }}"
-      loop: root_files_op.stdout_lines
+      loop: "{{ root_files_op.stdout_lines }}"
