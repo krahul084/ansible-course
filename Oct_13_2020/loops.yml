@@ -1,0 +1,14 @@
+---
+- name: all
+  gather_facts: false
+  become: yes
+  tasks: 
+    - name: "Get the list of files from /"
+      shell:
+        "ls"
+      args:
+        chdir: "/"
+      register: root_files_op
+
+    - debug: 
+        var: root_files_op

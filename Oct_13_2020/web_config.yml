@@ -1,6 +1,10 @@
 ---
 - name: Perform configuration for web servers
   hosts: webservers
+  vars:
+    html_file_list:
+      - "demo1.html"
+      - "demo2"
   tasks:
     - name: Display only if it is centos server
       import_tasks: show_meta.yml
