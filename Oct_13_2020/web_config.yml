@@ -1,5 +1,6 @@
 ---
-- hosts: webservers
+- name: Perform configuration for web servers
+  hosts: webservers
   tasks:
     - name: Display only if it is centos server
       import_tasks: show_meta.yml

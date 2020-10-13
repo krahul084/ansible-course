@@ -1,5 +1,6 @@
 ---
-- hosts: dbservers
+- name: Perform configuration for db servers
+  hosts: dbservers
   tasks: 
     - name: display db servers
       debug:  
