@@ -2,11 +2,9 @@
 - hosts: webservers
   tasks:
     - name: Display only if it is centos server
-      debug: 
-        msg: "This is centos server"
+      import_tasks: show_meta.yml
       when: ansible_distribution == "CentOS"
 
     - name: Display only if it is Ubuntu server
-      debug: 
-        msg: "This is Ubuntu server"
+      import_tasks: show_meta.yml
       when: ansible_distribution == "Ubuntu"

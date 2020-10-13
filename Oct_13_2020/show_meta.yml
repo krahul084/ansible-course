@@ -1,0 +1,9 @@
+---
+- name: Display server metadata
+  debug: 
+    msg: 
+      - "Server Information"
+      - "Hostname         - {{ ansible_hostname }}"
+      - "IP Address       - {{ ansible_default_ipv4.address }}"
+      - "Distro type      - {{ ansible_distribution }}"
+      - "Distro version   -  {{ ansible_distribution_version }}"
