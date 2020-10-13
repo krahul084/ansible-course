@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  tasks:
+    - name: Display only if it is centos server
+      import_tasks: show_meta.yml
+      when: ansible_distribution == "CentOS"
+
+    - name: Display only if it is Ubuntu server
+      import_tasks: show_meta.yml
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Execute this task for Centos version > 7
+      debug: 
+        msg: "Execute configuration for redhat 7.5"
+      when: 
+        - ansible_distribution == "CentOS"
+        - ansible_distribution_version is version('7','>=')
