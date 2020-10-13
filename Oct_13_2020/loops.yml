@@ -11,4 +11,5 @@
       register: root_files_op
 
     - debug: 
-        var: root_files_op
+        msg: "{{ item }}"
+      loop: root_files_op.stdout_lines
