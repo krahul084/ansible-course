@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  tasks:
+    - name: Display only if it is centos server
+      debug: 
+        msg: "This is centos server"
+      when: ansible_distribution == "Redhat"
+
+    - name: Display only if it is Ubuntu server
+      debug: 
+        msg: "This is Ubuntu server"
+      when: ansible_distribution == "Ubuntu"
