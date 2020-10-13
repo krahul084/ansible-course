@@ -13,3 +13,12 @@
     - debug: 
         msg: "{{ item }}"
       loop: "{{ root_files_op.stdout_lines }}"
+
+    - name: get metadata for filesystem
+      stat: 
+        path: "/{{ item }}"
+      register: filesys_meta
+      loop: "{{ root_files_op.stdout_lines }}"
+
+    - debug: 
+        var: filesys_meta
